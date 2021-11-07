@@ -1,1 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="login.css">
+</head>
+
+<body>
+  <div class="hero">
+    <div class="form-box">
+      <div class="button-box">
+        <div id="btn"></div>
+        <button type="button" class="toggle-btn" onclick="login()">Login</button>
+        <button type="button" class="toggle-btn" onclick="register()">Register</button>
+      </div>
+      <div class="icon">
+        <img src="https://img.icons8.com/external-tulpahn-flat-tulpahn/64/000000/external-cute-cat-emoji-tulpahn-flat-tulpahn.png"/>
+      </div>
+      <form action="" id="login" class="input-group">
+        <input type="text" class="input-field" placeholder="Email" required>
+        <input type="password" class="input-field" placeholder="Enter Password" required>
+        <button type="submit" class="submit-btn">Login</button>
+      </form>
+      <form action="" id="register"class="input-group">
+        <input type="text" class="input-field" placeholder="Email" required>
+        <input type="password" class="input-field" placeholder="Enter Password" required>
+        <input type="password" class="input-field" placeholder="Confirm Password" required>
+        <button type="submit" class="submit-btn">Sign Up</button>
+      </form>
+    </div>
+
+  </div>
+  <script>
+let x = document.getElementById("login");
+let y = document.getElementById("register");
+let z = document.getElementById("btn");
+
+function register(){
+  x.style.left = "-400px";
+  y.style.left = "50px";
+  z.style.left = "110px";}
+
+function login(){
+  x.style.left = "50px";
+  y.style.left = "450px";
+  z.style.left = "0px";
+
+}
+  </script>
+</body>
+
+</html>
