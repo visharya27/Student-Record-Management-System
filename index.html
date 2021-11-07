@@ -14,37 +14,36 @@
     <div class="form-box">
       <div class="button-box">
         <div id="btn"></div>
-        <button type="button" class="toggle-btn" onclick="login()">Login</button>
-        <button type="button" class="toggle-btn" onclick="register()">Register</button>
+        <button type="button" class="toggle-btn" onclick="rollnosearch()">Roll No.</button>
+        <button type="button" class="toggle-btn" onclick="namesearch()">Name</button>
       </div>
       <div class="icon">
-        <img src="https://img.icons8.com/external-tulpahn-flat-tulpahn/64/000000/external-cute-cat-emoji-tulpahn-flat-tulpahn.png"/>
+        <img src="https://studentcorner.epsiindia.org/upload/college/NIT_Hamirpur_logo.png"/>
       </div>
-      <form action="" id="login" class="input-group">
-        <input type="text" class="input-field" placeholder="Email" required>
-        <input type="password" class="input-field" placeholder="Enter Password" required>
-        <button type="submit" class="submit-btn">Login</button>
+      <form action="" id="rollno" class="input-group">
+        <input type="text" class="input-field" placeholder="Search by Roll No." required>
+        <button type="submit" class="submit-btn">Search</button>
+        <a style="padding: 10px 50px; margin: 52px auto;" href="">New Student Registration</a>
       </form>
-      <form action="" id="register"class="input-group">
-        <input type="text" class="input-field" placeholder="Email" required>
-        <input type="password" class="input-field" placeholder="Enter Password" required>
-        <input type="password" class="input-field" placeholder="Confirm Password" required>
-        <button type="submit" class="submit-btn">Sign Up</button>
+      <form action="" id="searchName"class="input-group">
+        <input type="text" class="input-field" placeholder="Search by Name" required>
+        <button type="submit" class="submit-btn">Search</button>
+        <a style="padding: 10px 50px; margin: 52px auto;" href="">New Student Registration</a>
       </form>
     </div>
 
   </div>
   <script>
-let x = document.getElementById("login");
-let y = document.getElementById("register");
+let x = document.getElementById("rollno");
+let y = document.getElementById("searchName");
 let z = document.getElementById("btn");
 
-function register(){
+function namesearch(){
   x.style.left = "-400px";
   y.style.left = "50px";
   z.style.left = "110px";}
 
-function login(){
+function rollnosearch(){
   x.style.left = "50px";
   y.style.left = "450px";
   z.style.left = "0px";
