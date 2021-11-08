@@ -20,22 +20,22 @@
       <div class="icon">
         <img src="https://studentcorner.epsiindia.org/upload/college/NIT_Hamirpur_logo.png"/>
       </div>
-      <form action="" id="rollno" class="input-group">
-        <input type="text" class="input-field" placeholder="Search by Roll No." required>
-        <button type="submit" class="submit-btn">Search</button>
-        <a style="padding: 10px 50px; margin: 52px auto;" href="login.html">New Student Registration</a>
+      <form action="display.php" method="get" id="rollno" class="input-group">
+        <input type="text" name="rollSearch" class="input-field" placeholder="Search by Roll No." required>
+        <button type="search" class="submit-btn">Search</button>
+        <a style="padding: 10px 50px; margin: 52px auto;" href="adminLogin.html">New Student Registration</a>
       </form>
-      <form action="" id="searchName"class="input-group">
-        <input type="text" class="input-field" placeholder="Search by Name" required>
-        <button type="submit" class="submit-btn">Search</button>
-        <a style="padding: 10px 50px; margin: 52px auto;" href="login.html">New Student Registration</a>
+      <form action="search.php" method="get" id="nameSearch"class="input-group">
+        <input type="text" name="nameSearch" class="input-field" placeholder="Search by Name" required>
+        <button type="search" class="submit-btn">Search</button>
+        <a style="padding: 10px 50px; margin: 52px auto;" href="adminLogin.html">New Student Registration</a>
       </form>
     </div>
 
   </div>
   <script>
 let x = document.getElementById("rollno");
-let y = document.getElementById("searchName");
+let y = document.getElementById("nameSearch");
 let z = document.getElementById("btn");
 
 function namesearch(){

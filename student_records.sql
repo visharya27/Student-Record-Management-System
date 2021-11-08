@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.2
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 08, 2021 at 10:22 AM
--- Server version: 10.4.11-MariaDB
--- PHP Version: 7.4.1
+-- Generation Time: Nov 08, 2021 at 05:11 PM
+-- Server version: 10.4.21-MariaDB
+-- PHP Version: 8.0.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -38,9 +37,9 @@ CREATE TABLE `students` (
   `fname` varchar(60) NOT NULL,
   `mname` varchar(60) NOT NULL,
   `address` varchar(250) NOT NULL,
-  `semester` tinyint(2) NOT NULL,
+  `yoadm` smallint(4) NOT NULL,
   `rollno` varchar(10) NOT NULL,
-  `dept` varchar(10) NOT NULL,
+  `dept` varchar(60) NOT NULL,
   `notes` varchar(50) DEFAULT NULL,
   `date` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -49,10 +48,8 @@ CREATE TABLE `students` (
 -- Dumping data for table `students`
 --
 
-INSERT INTO `students` (`name`, `age`, `gender`, `dob`, `email`, `phone`, `fname`, `mname`, `address`, `semester`, `rollno`, `dept`, `notes`, `date`) VALUES
-('Raghav', 19, 'male', '2002-02-13', 'raghav@gmail.com', 4878985826, 'Dont know', 'Dont know', 'Dont know', 5, '19509', 'Computer S', '', '2021-11-08'),
-('Vish', 20, 'male', '2000-02-25', 'cish@gmail.com', 9588587458, 'Trial', 'Trial', 'asd', 5, '195092', 'Computer', '', '2021-11-08'),
-('Gaurav', 21, 'male', '2021-11-03', 'gaurav@gmail.com', 9541258466, 'Umesh', 'Rajni', 'sfsdf', 5, '195102', 'Computer', '', '2021-11-08');
+INSERT INTO `students` (`name`, `age`, `gender`, `dob`, `email`, `phone`, `fname`, `mname`, `address`, `yoadm`, `rollno`, `dept`, `notes`, `date`) VALUES
+('Vishwas Arya', 21, 'male', '2000-08-27', 'vishwasarya2000@gmail.com', 9413977291, 'Vijay Prakash', 'Sangeeta', 'Plot-30, Sec-12, Hanumangarh Junction', 2019, '195091', 'Computer Science', '', '2021-11-08');
 
 --
 -- Indexes for dumped tables
@@ -63,6 +60,7 @@ INSERT INTO `students` (`name`, `age`, `gender`, `dob`, `email`, `phone`, `fname
 --
 ALTER TABLE `students`
   ADD UNIQUE KEY `rollno` (`rollno`);
+ALTER TABLE `students` ADD FULLTEXT KEY `name` (`name`,`rollno`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

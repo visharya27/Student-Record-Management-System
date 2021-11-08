@@ -7,10 +7,10 @@ if(isset($_POST['name'])){
     $password = "";
 
     // Create a database connection
-    $con = mysqli_connect($server, $username, $password);
+    $conn = mysqli_connect($server, $username, $password);
 
     // Check for connection success
-    if(!$con){
+    if(!$conn){
         die("connection to this database failed due to" . mysqli_connect_error());
     }
     // echo "Success connecting to the db";
@@ -25,26 +25,26 @@ if(isset($_POST['name'])){
     $fname = $_POST['fname'];
     $mname = $_POST['mname'];
     $address = $_POST['address'];
-    $semester = $_POST['semester'];
+    $yoadm = $_POST['yoadm'];
     $rollno = $_POST['rollno'];
     $dept = $_POST['dept'];
     $notes = $_POST['notes'];
-    $sql = "INSERT INTO `student_records`.`students` (`name`, `age`, `gender`,`dob`, `email`, `phone`, `fname`, `mname`, `address`, `semester`, `rollno`, `dept`, `notes`, `date`) VALUES ('$name', '$age', '$gender','$dob', '$email', '$phone','$fname','$mname','$address','$semester','$rollno','$dept','$notes', current_timestamp());";
+    $sql = "INSERT INTO `student_records`.`students` (`name`, `age`, `gender`,`dob`, `email`, `phone`, `fname`, `mname`, `address`, `yoadm`, `rollno`, `dept`, `notes`, `date`) VALUES ('$name', '$age', '$gender','$dob', '$email', '$phone','$fname','$mname','$address','$yoadm','$rollno','$dept','$notes', current_timestamp());";
     // echo $sql;
     
     // Execute the query
-    if($con->query($sql) == true){
+    if($conn->query($sql) == true){
         // echo "Successfully inserted";
 
         // Flag for successful insertion
         $insert = true;
     }
     else{
-        echo "ERROR: $sql <br> $con->error";
+        echo "ERROR: $sql <br> $conn->error";
     }
 
     // Close the database connection
-    $con->close();
+    $conn->close();
 }
 ?>
 
@@ -72,8 +72,8 @@ if(isset($_POST['name'])){
       <form action="student-reg.php" method="post" id="student">
             <div class="input-fields">
             <div class="input-group">
-            <input type="text" name="name" id="name" class="input-field" placeholder="Student's name">
-            <input type="number" name="age" id="age" class="input-field" placeholder="Student's Age">
+            <input type="text" name="name" id="name" class="input-field" placeholder="Student's name" required>
+            <input type="number" name="age" id="age" class="input-field" placeholder="Student's Age" required>
             <div class="input-field" style="border: none;">
             <div class="label">Gender:</div>
             <input type="radio" name="gender" id="male" required value="male" checked>
@@ -89,19 +89,22 @@ if(isset($_POST['name'])){
             <div class="input-group">
             <input type="text" name="mname" id="mname" placeholder="Student's mothers name" class="input-field" required>
             <input type="text" name="address" id="address" placeholder="Student's address" class="input-field" required>
-            <input type="number" name="semester" id="semester" placeholder="Student's semester" class="input-field" required>
+            <input type="number" name="yoadm" id="yoadm" placeholder="Student's Year of Admission" class="input-field" required>
             <input type="number" name="rollno" id="rollno" placeholder="Student's roll no" class="input-field" required>
             <div style="display: table;">
             <label for="dept" style="margin-right: 10px;">Department:</label>
             <select name="dept" id="dept">
-            <option value="Computer Science">Computer Science</option>
-            <option value="Mechanical">Mechanical</option>
-            <option value="Electronics Comm.">ECE</option>
-            <option value="Electrical">Electrical</option>
-            <option value="Material Science">Material Science</option>
-            <option value="Civil">Civil</option>
-            <option value="Chemical">Chemical</option>
-            <option value="Maths & Compt">MNC</option>
+            <option value="Computer Science">Computer Science and Engineering</option>
+            <option value="Computer Science Dual">Computer Science and Engineering (Dual Degree)</option>
+            <option value="Mechanical">Mechanical Engineering</option>
+            <option value="Electronics Comm.">Electronics and Communication Engineering</option>
+            <option value="Electronics Comm. Dual">Electronics and Communication Engineering (Dual Degree)</option>
+            <option value="Electrical">Electrical Engineering</option>
+            <option value="Material Science">Material Science and Engineering</option>
+            <option value="Civil">Civil Engineering</option>
+            <option value="Chemical">Chemical Engineering</option>
+            <option value="Maths & Compt">Mathematics & Scientific Computing</option>
+            <option value="Arch">Architecture</option>
             </select>
             </div>
             <textarea name="notes" id="notes" cols="30" rows="5" placeholder="Any notes ?"></textarea>
