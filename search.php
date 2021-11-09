@@ -22,22 +22,22 @@ if(!$conn){
     <title>Document</title>
     <link rel="stylesheet" href="index.css">
     <style>
-        td {
-    background-color: #dbd4f5;
-    border: 1px solid black;
-}
+    td {
+        background-color: #dbd4f5;
+        border: 1px solid black;
+    }
 
-th,
-td {
-    font-weight: bold;
-    border: 1px solid black;
-    padding: 10px;
-    text-align: center;
-}
+    th,
+    td {
+        font-weight: bold;
+        border: 1px solid black;
+        padding: 10px;
+        text-align: center;
+    }
 
-td {
-    font-weight: lighter;
-}
+    td {
+        font-weight: lighter;
+    }
     </style>
 </head>
 
@@ -59,7 +59,9 @@ td {
             $query = $_GET["nameSearch"];
             $sql = "select * from students where match (name, rollno) against ('$query')"; 
             $result = mysqli_query($conn, $sql);
+            $noResult = true;
             while($row = mysqli_fetch_assoc($result)){
+                $noResult = false;
                 $name = $row['name'];
                 $rollno = $row['rollno'];
                 $dept = $row['dept'];
@@ -70,9 +72,17 @@ td {
                 <td>'. $dept.' </td>
                 </tr>';
             }
+            
             ?>
                     </table>
                 </section>
+                <?php
+                    if($noResult){
+                        echo '<h2 style="margin: 20px 65px;">No Results Found!</h2>
+                        <a style="margin-left:65px; text-decoration: none;" href="adminLogin.html">Register a New Student?</a>
+                        ';
+                    }
+                ?>
             </div>
         </div>
 

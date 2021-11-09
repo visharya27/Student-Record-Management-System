@@ -14,7 +14,9 @@ if(!$conn){
 $query = $_GET["rollSearch"];
             $sql = "select * from students where rollno = $query"; 
             $result = mysqli_query($conn, $sql);
+            $noResult = true;
             while($row = mysqli_fetch_assoc($result)){
+                $noResult = false;
                 $name = $row['name'];
                 $age = $row['age'];
                 $gender = $row['gender'];
@@ -48,28 +50,38 @@ $query = $_GET["rollSearch"];
 <body>
     <div class="hero">
         <div style="width: 40%; height: 700px;" class="form-box">
-            <div class="button-box">
-                <h2 style="padding: 5px; width: max-content;">Student's Detail</h4>
-            </div>
-            <div style="flex-direction: column;" class="input-fields">
-                    <div class="label">Name: <?php echo $name ?></div>
-                    <div class="label">Roll no.: <?php echo $rollno ?></div>
-                    <div class="label">Father's Name: <?php echo $fname ?></div>
-                    <div class="label">Mother's Name: <?php echo $mname ?></div>
-                    <div class="label">Age: <?php echo $age ?></div>
-                    <div class="label">Gender: <?php echo $gender ?></div>
-                    <div class="label">Date of Birth: <?php echo $dob ?></div>
-                    <div class="label">Email: <?php echo $email?></div>
-                    <div class="label">Mobile: <?php echo $phone ?></div>
-                    <div style="margin: 10px 50px 20px 50px;" class="label">Address: <?php echo $address ?></div>
-                    <div class="label">Year of Admission: <?php echo $yoadm ?></div>
-                    <div class="label">Department: <?php echo $dept ?></div>
-                    <div class="label">Comments: <?php echo $notes ?></div>
-                    </div>
+            <?php
+            if($noResult){
+                echo '<div class="button-box">
+                <h2 style="padding: 5px; width: max-content;">Roll no. does not exist!</h4>
                 </div>
-
-            </div>
-        </div>
-</body>
-
-</html>
+                <a style="margin-left:65px; text-decoration: none;" href="adminLogin.html">Register a New Student?</a>';
+            }
+            else{
+                echo '
+                <div class="button-box">
+                <h2 style="padding: 5px; width: max-content;">Student\'s Detail</h4>
+                </div>
+                <div style="flex-direction: column;" class="input-fields">
+                <div class="label">Name: '.$name.'</div>
+                <div class="label">Roll no.: '.$rollno.'</div>
+                <div class="label">Father\'s Name: '.$fname.'</div>
+                <div class="label">Mother\'s Name: '.$mname.'</div>
+                <div class="label">Age: '.$age.'</div>
+                <div class="label">Gender: '.$gender.'</div>
+                <div class="label">Date of Birth: '.$dob.'</div>
+                <div class="label">Email: '.$email.'</div>
+                <div class="label">Mobile: '.$phone.'</div>
+                <div style="margin: 10px 50px 20px 50px;" class="label">Address: '.$address.'</div>
+                <div class="label">Year of Admission: '.$yoadm.'</div>
+                <div class="label">Department: '.$dept.'</div>
+                <div class="label">Comments: '.$notes.'</div>
+                </div>
+                </div>';}
+                ?>
+                
+                </div>
+                </div>
+                </body>
+                
+                </html>
