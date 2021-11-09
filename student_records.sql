@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 4.9.2
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 08, 2021 at 05:11 PM
--- Server version: 10.4.21-MariaDB
--- PHP Version: 8.0.10
+-- Generation Time: Nov 09, 2021 at 09:12 AM
+-- Server version: 10.4.11-MariaDB
+-- PHP Version: 7.4.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -49,7 +50,26 @@ CREATE TABLE `students` (
 --
 
 INSERT INTO `students` (`name`, `age`, `gender`, `dob`, `email`, `phone`, `fname`, `mname`, `address`, `yoadm`, `rollno`, `dept`, `notes`, `date`) VALUES
-('Vishwas Arya', 21, 'male', '2000-08-27', 'vishwasarya2000@gmail.com', 9413977291, 'Vijay Prakash', 'Sangeeta', 'Plot-30, Sec-12, Hanumangarh Junction', 2019, '195091', 'Computer Science', '', '2021-11-08');
+('Vishwas Arya', 21, 'male', '2000-08-27', 'vishwasarya2000@gmail.com', 9413977291, 'Vijay Prakash', 'Sangeeta', 'Plot-30, Sec-12, Hanumangarh Junction', 2019, '195091', 'Computer Science', '', '2021-11-08'),
+('Navya', 19, 'female', '2021-11-05', 'navya@gmail.com', 7828095861, 'XYZ', 'YZA', 'ZAB', 2019, '195096', 'Computer Science', '', '2021-11-09');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `users`
+--
+
+CREATE TABLE `users` (
+  `username` varchar(20) NOT NULL,
+  `password` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`username`, `password`) VALUES
+('admin', '2eea0e02d74191937b06ae8ab6923f3dea846166');
 
 --
 -- Indexes for dumped tables
@@ -61,6 +81,12 @@ INSERT INTO `students` (`name`, `age`, `gender`, `dob`, `email`, `phone`, `fname
 ALTER TABLE `students`
   ADD UNIQUE KEY `rollno` (`rollno`);
 ALTER TABLE `students` ADD FULLTEXT KEY `name` (`name`,`rollno`);
+
+--
+-- Indexes for table `users`
+--
+ALTER TABLE `users`
+  ADD UNIQUE KEY `username` (`username`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

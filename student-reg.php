@@ -1,5 +1,9 @@
 <?php
-$insert = false;
+    session_start();
+    if(!isset($_SESSION['username'])){
+    header("Location:adminLogin.php");
+    }
+    $insert = false;
 if(isset($_POST['name'])){
     // Set connection variables
     $server = "localhost";
@@ -65,7 +69,7 @@ if(isset($_POST['name'])){
         <h4 style="padding: 5px; width: max-content;">Enter the student's details</h4>
         <?php
             if($insert == true){
-            echo "<div class='submitMsg'>Thanks for submitting your form.</div>";
+                echo '<script>alert("Student registered.")</script>';
         }
         ?>
         </div>
