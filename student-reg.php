@@ -44,7 +44,11 @@ if(isset($_POST['name'])){
         $insert = true;
     }
     else{
-        echo "ERROR: $sql <br> $conn->error";
+        // echo "ERROR: $sql <br> $conn->error";
+        echo '<div style="margin-bottom: 0px;" class="alert">
+                <span class="closebtn" onclick="this.parentElement.style.display=\'none\';">&times;</span>
+                Failed! '.$conn->error.'
+              </div>';
     }
 
     // Close the database connection
@@ -54,69 +58,112 @@ if(isset($_POST['name'])){
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NITH - Student Records</title>
     <link rel="stylesheet" href="studentreg.css">
+    <style>
+        .alert {
+  padding: 20px;
+  background-color: #f44336; /* Red */
+  color: white;
+  margin-bottom: 15px;
+}
+
+/* The close button */
+.closebtn {
+  margin-left: 15px;
+  color: white;
+  font-weight: bold;
+  float: right;
+  font-size: 22px;
+  line-height: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+/* When moving the mouse over the close button */
+.closebtn:hover {
+  color: black;
+}
+    </style>
 </head>
+
 <body>
-<div class="error">
-</div>
-	<div class="hero">
-    <div class="form-box">
-      <div class="button-box">
-        <h4 style="padding: 5px; width: max-content;">Enter the student's details</h4>
-        <?php
+    <div class="error">
+    </div>
+    <div class="hero">
+                <?php
             if($insert == true){
-                echo '<script>alert("Student registered.")</script>';
+                echo '<div style="background-color:#1ee46dde;" class="alert">
+                <span class="closebtn" onclick="this.parentElement.style.display=\'none\';">&times;</span>
+                Student has been successfully registered!
+              </div>';
         }
         ?>
+        <div class="form-box">
+            <div class="button-box">
+                <h4 style="padding: 5px; width: max-content;">Enter the student's details</h4>
+            </div>
+            <form action="student-reg.php" method="post" id="student">
+                <div class="input-fields">
+                    <div class="input-group">
+                        <input type="text" name="name" id="name" class="input-field" placeholder="Student's name"
+                            required>
+                        <input type="number" name="age" id="age" class="input-field" placeholder="Student's Age"
+                            required>
+                        <div class="input-field" style="border: none;">
+                            <div class="label">Gender:</div>
+                            <input type="radio" name="gender" id="male" required value="male" checked>
+                            <label for="male" style="margin-right: 10px;">Male</label>
+                            <input type="radio" name="gender" id="female" required value="female">
+                            <label for="female">Female</label><br>
+                        </div>
+                        <input type="text" name="dob" id="dob" placeholder="Student's Date of Birth" class="input-field" onfocus="(this.type='date')"
+                            required>
+                        <input type="email" name="email" id="email" placeholder="Student's email" class="input-field"
+                            required>
+                        <input type="phone" name="phone" id="phone" placeholder="Student's phone no" class="input-field"
+                            required>
+                        <input type="text" name="fname" id="fname" placeholder="Student's fathers name"
+                            class="input-field" required>
+                    </div>
+                    <div class="input-group">
+                        <input type="text" name="mname" id="mname" placeholder="Student's mothers name"
+                            class="input-field" required>
+                        <input type="text" name="address" id="address" placeholder="Student's address"
+                            class="input-field" required>
+                        <input type="number" name="yoadm" id="yoadm" placeholder="Student's Year of Admission"
+                            class="input-field" required>
+                        <input type="number" name="rollno" id="rollno" placeholder="Student's roll no"
+                            class="input-field" required>
+                        <div style="display: table;">
+                            <label for="dept" style="margin-right: 10px;">Department:</label>
+                            <select name="dept" id="dept">
+                                <option value="Computer Science">Computer Science and Engineering</option>
+                                <option value="Computer Science Dual">Computer Science and Engineering (Dual Degree)
+                                </option>
+                                <option value="Mechanical">Mechanical Engineering</option>
+                                <option value="Electronics Comm.">Electronics and Communication Engineering</option>
+                                <option value="Electronics Comm. Dual">Electronics and Communication Engineering (Dual
+                                    Degree)</option>
+                                <option value="Electrical">Electrical Engineering</option>
+                                <option value="Material Science">Material Science and Engineering</option>
+                                <option value="Civil">Civil Engineering</option>
+                                <option value="Chemical">Chemical Engineering</option>
+                                <option value="Maths & Compt">Mathematics & Scientific Computing</option>
+                                <option value="Arch">Architecture</option>
+                            </select>
+                        </div>
+                        <textarea name="notes" id="notes" cols="30" rows="5" placeholder="Any notes ?"></textarea>
+                    </div>
+                </div>
+                <button id="btn" type="submit" value="Submit" class="submit-btn">Submit</button>
+            </form>
         </div>
-      <form action="student-reg.php" method="post" id="student">
-            <div class="input-fields">
-            <div class="input-group">
-            <input type="text" name="name" id="name" class="input-field" placeholder="Student's name" required>
-            <input type="number" name="age" id="age" class="input-field" placeholder="Student's Age" required>
-            <div class="input-field" style="border: none;">
-            <div class="label">Gender:</div>
-            <input type="radio" name="gender" id="male" required value="male" checked>
-            <label for="male" style="margin-right: 10px;">Male</label>
-            <input type="radio" name="gender" id="female" required value="female">
-            <label for="female">Female</label><br>
-            </div>
-            <input type="date" name="dob" id="dob" placeholder="Student's Date of Birth" class="input-field" required>
-            <input type="email" name="email" id="email" placeholder="Student's email" class="input-field" required>
-            <input type="phone" name="phone" id="phone" placeholder="Student's phone no" class="input-field" required>
-            <input type="text" name="fname" id="fname" placeholder="Student's fathers name" class="input-field" required>
-            </div>
-            <div class="input-group">
-            <input type="text" name="mname" id="mname" placeholder="Student's mothers name" class="input-field" required>
-            <input type="text" name="address" id="address" placeholder="Student's address" class="input-field" required>
-            <input type="number" name="yoadm" id="yoadm" placeholder="Student's Year of Admission" class="input-field" required>
-            <input type="number" name="rollno" id="rollno" placeholder="Student's roll no" class="input-field" required>
-            <div style="display: table;">
-            <label for="dept" style="margin-right: 10px;">Department:</label>
-            <select name="dept" id="dept">
-            <option value="Computer Science">Computer Science and Engineering</option>
-            <option value="Computer Science Dual">Computer Science and Engineering (Dual Degree)</option>
-            <option value="Mechanical">Mechanical Engineering</option>
-            <option value="Electronics Comm.">Electronics and Communication Engineering</option>
-            <option value="Electronics Comm. Dual">Electronics and Communication Engineering (Dual Degree)</option>
-            <option value="Electrical">Electrical Engineering</option>
-            <option value="Material Science">Material Science and Engineering</option>
-            <option value="Civil">Civil Engineering</option>
-            <option value="Chemical">Chemical Engineering</option>
-            <option value="Maths & Compt">Mathematics & Scientific Computing</option>
-            <option value="Arch">Architecture</option>
-            </select>
-            </div>
-            <textarea name="notes" id="notes" cols="30" rows="5" placeholder="Any notes ?"></textarea>
-            </div>    
-            </div>
-            <button id="btn" type="submit" value="Submit" class="submit-btn">Submit</button> 
-        </form>
     </div>
-  </div>
 </body>
+
 </html>

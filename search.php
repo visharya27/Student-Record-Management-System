@@ -79,7 +79,7 @@ if(!$conn){
                 <?php
                     if($noResult){
                         echo '<h2 style="margin: 20px 65px;">No Results Found!</h2>
-                        <a style="margin-left:65px; text-decoration: none;" href="adminLogin.html">Register a New Student?</a>
+                        <a style="margin-left:65px; text-decoration: none;" href="adminLogin.php">Register a New Student?</a>
                         ';
                     }
                 ?>

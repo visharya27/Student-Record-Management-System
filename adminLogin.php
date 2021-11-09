@@ -18,7 +18,6 @@
           if ($with_script_tags) {
               $js_code = '<script>' . $js_code . '</script>';
           }
-          echo $js_code;
     }
 
     if(isSet($_POST['username'])) {  
@@ -28,7 +27,6 @@
 
         $query = mysqli_query($conn, "SELECT * FROM users WHERE username='".addSlashes($username)."' AND password='".addSlashes($password)."'");
         $res = mysqli_num_rows($query);
-        echo $res;
         if ($res == 1) {
             $_SESSION['username'] = $username;
             $_SESSION['password'] = $password;
@@ -37,7 +35,10 @@
             header('Location: student-reg.php');
             exit;
         } else {
-            echo 'Data does not match <br /> RE-Enter Username and Password';
+          echo '<div style="margin-bottom: 0px;" class="alert">
+          <span class="closebtn" onclick="this.parentElement.style.display=\'none\';">&times;</span>
+          Username or Password does not match! Try Again.
+        </div>';
         }
     }
 
@@ -47,7 +48,31 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="adminlogin.css">
-    
+    <style>
+        .alert {
+  padding: 20px;
+  background-color: #f44336; /* Red */
+  color: white;
+  margin-bottom: 15px;
+}
+
+/* The close button */
+.closebtn {
+  margin-left: 15px;
+  color: white;
+  font-weight: bold;
+  float: right;
+  font-size: 22px;
+  line-height: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+/* When moving the mouse over the close button */
+.closebtn:hover {
+  color: black;
+}
+    </style>
   </head>
   <body>
     

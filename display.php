@@ -55,7 +55,7 @@ $query = $_GET["rollSearch"];
                 echo '<div class="button-box">
                 <h2 style="padding: 5px; width: max-content;">Roll no. does not exist!</h4>
                 </div>
-                <a style="margin-left:65px; text-decoration: none;" href="adminLogin.html">Register a New Student?</a>';
+                <a style="margin-left:65px; text-decoration: none;" href="adminLogin.php">Register a New Student?</a>';
             }
             else{
                 echo '
